@@ -1,0 +1,943 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto:300,400,700&subset=cyrillic" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/sweetalert/dist/sweetalert.css">
+    <link rel="stylesheet" href="bower_components/fancyBox/source/jquery.fancybox.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="banner/banner.css">
+    <style>
+        .banner {
+            width: 800px;
+            height: 450px;
+        }
+
+        .banner > .banner-image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner-close {
+            position: absolute;
+            cursor: pointer;
+            top: 10px;
+            right: 8px;
+            text-indent: -9999px;
+            width: 40px;
+            height: 39px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <header class="page-header fixed">
+        <div class="inner">
+            <a href="/" class="logo">
+                <img src="/images/logo.png" alt="Logo" width="223" height="107">
+            </a>
+
+            <div class="social">
+                <span>В соц. сетях</span>
+                <a href="#"  class="icon icon-twitter"></a>
+                <a href="#" class="icon icon-vk"></a>
+                <a href="#" class="icon icon-facebook"></a>
+                <a href="#" class="icon icon-google"></a>
+            </div>
+
+            <div class="phone-block">
+                <div class="label">Контактный телефон</div>
+                <a href="tel:8632277722" class="phone">
+                    (863) <span class="bold">227 77 22</span>
+                </a>
+            </div>
+
+            <div class="callme">
+                <a href="#callme-popup" class="btn btn-blue fancybox-popup">
+                    Перезвоните мне!
+                    <i class="icon icon-phone"></i>
+                </a>
+            </div>
+
+            <nav id="main-menu" class="main-menu">
+                <ul class="main-menu__list">
+                    <li class="main-menu__item main-menu__item--active">
+                        <a href="#top" class="main-menu__link">Главная</a>
+                    </li>
+                    <li class="main-menu__item main-menu__item--with-submenu">
+                        <a href="#villages" class="main-menu__link">Поселки</a>
+
+                        <ul class="main-menu__submenu">
+                            <li class="main-menu__submenu-item">
+                                <a href="#boroviki" data-village class="main-menu__submenu-item-link">Боровики 2</a>
+                            </li>
+                            <li class="main-menu__submenu-item">
+                                <a href="#sun-valley" data-village class="main-menu__submenu-item-link">Солнечная долина</a>
+                            </li>
+                            <li class="main-menu__submenu-item">
+                                <a href="#tishnevo" data-village class="main-menu__submenu-item-link">Тишнево 1,2,3</a>
+                            </li>
+                            <li class="main-menu__submenu-item">
+                                <a href="#promzemlya" data-village class="main-menu__submenu-item-link">Промземля</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="main-menu__item">
+                        <a href="#calculator" class="main-menu__link">Подобрать участок</a>
+                    </li>
+                    <li class="main-menu__item">
+                        <a href="#discount" class="main-menu__link">Акции</a>
+                    </li>
+                    <li class="main-menu__item">
+                        <a href="#22" class="main-menu__link">Новости</a>
+                    </li>
+                    <li class="main-menu__item">
+                        <a href="#map" class="main-menu__link">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div id="top" class="jumbotron">
+        <div class="container">
+            <div class="jumbotron__inner">
+                <h1 class="jumbotron__header">Найди свой участок!</h1>
+                <p class="jumbotron__subheader">Коттеджные поселки по Киевскому <br> направлению на любой вкус - <br> всё для лучшей жизни</p>
+                <p class="jumbotron__paragraph">Посёлки окружены лесами Боровского лесничества, рядом четыре больших озера: Межура, Каверино, Озерное, Лесное. Протекают реки Протва, Истья. В собственности нашей компании два колхоза, животноводческая ферма и молочный завод. Круглый год Вы будете обеспечены самыми свежими молочными и мясными продуктами.</p>
+
+                <div class="jumbotron__label">Воспользуйтесь нашим удобным конфигуратором участков</div>
+                <div class="jumbotron__action">
+                    <a href="#" data-scrollto="#calculator" class="btn btn-yellow jumbotron__button">Подобрать участок</a>
+                </div>
+            </div>
+
+            <div class="settlements-thumbs">
+                <div class="settlements-thumbs__item">
+                    <div class="settlements-thumbs__thumb icon-boroviki"></div>
+                    <a href="#boroviki" data-village class="settlements-thumbs__title">Боровики 2</a>
+                </div>
+
+                <div class="settlements-thumbs__item">
+                    <div class="settlements-thumbs__thumb icon-sun-valley"></div>
+                    <a href="#sun-valley" data-village class="settlements-thumbs__title">Солнечная долина</a>
+                </div>
+
+                <div class="settlements-thumbs__item">
+                    <div class="settlements-thumbs__thumb icon-tishnevo"></div>
+                    <a href="#tishnevo" data-village class="settlements-thumbs__title">Тишнево 1,2,3</a>
+                </div>
+
+                <div class="settlements-thumbs__item">
+                    <div class="settlements-thumbs__thumb icon-prom"></div>
+                    <a href="#promzemlya" data-village class="settlements-thumbs__title">Промземля</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="discount" class="discount">
+        <div class="inner">
+            <div class="discount__header">
+                Летние скидки! <span class="bold">10-15% на дома</span>
+            </div>
+            <div class="discount__image"></div>
+            <div class="discount__footer">
+                Брусовые дома в поселках Тишенево. Все коммуникации готовы. Брусовые дома в поселках Тищинево. Все коммуникации готовы. Брусовые дома в поселках Тищинево. Все коммуникации готовы.
+            </div>
+
+            <div class="discount__label icon-action-label">
+                Акция
+            </div>
+        </div>
+    </div>
+    <div id="calculator" class="calculator">
+        <div class="inner">
+            <header class="calculator__title">
+                Подбери участок за 5 кликов
+            </header>
+
+            <form action="/search.php" id="calculator-form">
+                <div class="col-group">
+                    <div class="col-3 calculator__column">
+                        <header class="calculator__header">Площадь участка</header>
+                        <div class="calculator-item">
+                            <div class="calculator-item__label">7-10 соток</div>
+                            <div class="calculator-item__control">
+                                <input type="checkbox" id="switcher-1" class="switcher" checked>
+                                <label for="switcher-1">
+                                    <span class="toggle"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="calculator-item">
+                            <div class="calculator-item__label">7-10 соток</div>
+                            <div class="calculator-item__control">
+                                <input type="checkbox" id="switcher-2" class="switcher">
+                                <label for="switcher-2">
+                                    <span class="toggle"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="calculator-item">
+                            <div class="calculator-item__label">7-10 соток</div>
+                            <div class="calculator-item__control">
+                                <input type="checkbox" id="switcher-3" class="switcher">
+                                <label for="switcher-3">
+                                    <span class="toggle"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="calculator-item">
+                            <div class="calculator-item__label">7-10 соток</div>
+                            <div class="calculator-item__control">
+                                <input type="checkbox" id="switcher-4" class="switcher">
+                                <label for="switcher-4">
+                                    <span class="toggle"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="calculator__group">
+                            <div class="calculator__group-6">
+                                <div class="calculator-item">
+                                    <div class="calculator-item__label">1 Га</div>
+                                    <div class="calculator-item__control">
+                                        <input type="checkbox" id="switcher-5" class="switcher">
+                                        <label for="switcher-5">
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="calculator__group-6">
+                                <div class="calculator-item">
+                                    <div class="calculator-item__label">1 Га</div>
+                                    <div class="calculator-item__control">
+                                        <input type="checkbox" id="switcher-6" class="switcher">
+                                        <label for="switcher-6">
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 calculator__column">
+                        <header class="calculator__header">Ландшафт</header>
+                        <div class="calculator-item">
+                            <div class="calculator-item__label">7-10 соток</div>
+                            <div class="calculator-item__control">
+                                <input type="checkbox" id="switcher-7" class="switcher" checked>
+                                <label for="switcher-7">
+                                    <span class="toggle"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="calculator-item">
+                            <div class="calculator-item__label">7-10 соток</div>
+                            <div class="calculator-item__control">
+                                <input type="checkbox" id="switcher-8" class="switcher">
+                                <label for="switcher-8">
+                                    <span class="toggle"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="calculator-item">
+                            <div class="calculator-item__label">7-10 соток</div>
+                            <div class="calculator-item__control">
+                                <input type="checkbox" id="switcher-9" class="switcher">
+                                <label for="switcher-9">
+                                    <span class="toggle"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="calculator-item">
+                            <div class="calculator-item__label">7-10 соток</div>
+                            <div class="calculator-item__control">
+                                <input type="checkbox" id="switcher-10" class="switcher">
+                                <label for="switcher-10">
+                                    <span class="toggle"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="calculator__group">
+                            <div class="calculator__group-6">
+                                <div class="calculator-item">
+                                    <div class="calculator-item__label">1 Га</div>
+                                    <div class="calculator-item__control">
+                                        <input type="checkbox" id="switcher-11" class="switcher">
+                                        <label for="switcher-11">
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="calculator__group-6">
+                                <div class="calculator-item">
+                                    <div class="calculator-item__label">1 Га</div>
+                                    <div class="calculator-item__control">
+                                        <input type="checkbox" id="switcher-12" class="switcher">
+                                        <label for="switcher-12">
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 calculator__column">
+                        <header class="calculator__header">Инфраструктура</header>
+                        <div class="calculator-item">
+                            <div class="calculator-item__label">7-10 соток</div>
+                            <div class="calculator-item__control">
+                                <input type="checkbox" id="switcher-13" class="switcher" checked>
+                                <label for="switcher-13">
+                                    <span class="toggle"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="calculator-item">
+                            <div class="calculator-item__label">7-10 соток</div>
+                            <div class="calculator-item__control">
+                                <input type="checkbox" id="switcher-15" class="switcher">
+                                <label for="switcher-15">
+                                    <span class="toggle"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="calculator-item">
+                            <div class="calculator-item__label">7-10 соток</div>
+                            <div class="calculator-item__control">
+                                <input type="checkbox" id="switcher-16" class="switcher">
+                                <label for="switcher-16">
+                                    <span class="toggle"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="calculator-item">
+                            <div class="calculator-item__label">7-10 соток</div>
+                            <div class="calculator-item__control">
+                                <input type="checkbox" id="switcher-17" class="switcher">
+                                <label for="switcher-17">
+                                    <span class="toggle"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="calculator__group">
+                            <div class="calculator__group-6">
+                                <div class="calculator-item">
+                                    <div class="calculator-item__label">1 Га</div>
+                                    <div class="calculator-item__control">
+                                        <input type="checkbox" id="switcher-18" class="switcher">
+                                        <label for="switcher-18">
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="calculator__group-6">
+                                <div class="calculator-item">
+                                    <div class="calculator-item__label">1 Га</div>
+                                    <div class="calculator-item__control">
+                                        <input type="checkbox" id="switcher-19" class="switcher">
+                                        <label for="switcher-19">
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 calculator__column">
+                        <header class="calculator__header">Категория земли</header>
+                        <div class="calculator-item">
+                            <div class="calculator-item__label">7-10 соток</div>
+                            <div class="calculator-item__control">
+                                <input type="checkbox" id="switcher-20" class="switcher" checked>
+                                <label for="switcher-20">
+                                    <span class="toggle"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="calculator-item">
+                            <div class="calculator-item__label">7-10 соток</div>
+                            <div class="calculator-item__control">
+                                <input type="checkbox" id="switcher-21" class="switcher">
+                                <label for="switcher-21">
+                                    <span class="toggle"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="calculator-item">
+                            <div class="calculator-item__label">7-10 соток</div>
+                            <div class="calculator-item__control">
+                                <input type="checkbox" id="switcher-22" class="switcher">
+                                <label for="switcher-22">
+                                    <span class="toggle"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="calculator-item">
+                            <div class="calculator-item__label">7-10 соток</div>
+                            <div class="calculator-item__control">
+                                <input type="checkbox" id="switcher-23" class="switcher">
+                                <label for="switcher-23">
+                                    <span class="toggle"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="calculator__group">
+                            <div class="calculator__group-6">
+                                <div class="calculator-item">
+                                    <div class="calculator-item__label">1 Га</div>
+                                    <div class="calculator-item__control">
+                                        <input type="checkbox" id="switcher-24" class="switcher">
+                                        <label for="switcher-24">
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="calculator__group-6">
+                                <div class="calculator-item">
+                                    <div class="calculator-item__label">1 Га</div>
+                                    <div class="calculator-item__control">
+                                        <input type="checkbox" id="switcher-25" class="switcher">
+                                        <label for="switcher-25">
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-group">
+                    <div class="col-6 calculator__column">
+                        <header class="calculator__header">Коммуникации</header>
+                        <div class="calculator__group">
+                            <div class="calculator__group-6">
+                                <div class="calculator__group">
+                                    <div class="calculator__group-6">
+                                        <div class="calculator-item">
+                                            <div class="calculator-item__label">Газ</div>
+                                            <div class="calculator-item__control">
+                                                <input type="checkbox" id="switcher-28" class="switcher">
+                                                <label for="switcher-28">
+                                                    <span class="toggle"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="calculator-item">
+                                            <div class="calculator-item__label">Вода</div>
+                                            <div class="calculator-item__control">
+                                                <input type="checkbox" id="switcher-29" class="switcher">
+                                                <label for="switcher-29">
+                                                    <span class="toggle"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="calculator__group-6">
+                                        <div class="calculator-item">
+                                            <div class="calculator-item__label">Вода</div>
+                                            <div class="calculator-item__control">
+                                                <input type="checkbox" id="switcher-30" class="switcher">
+                                                <label for="switcher-30">
+                                                    <span class="toggle"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="calculator__group-6">
+                                <div class="calculator-item">
+                                    <div class="calculator-item__label">Дороги / Гравий</div>
+                                    <div class="calculator-item__control">
+                                        <input type="checkbox" id="switcher-31" class="switcher">
+                                        <label for="switcher-31">
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="calculator-item">
+                                    <div class="calculator-item__label">Дороги / Бетон</div>
+                                    <div class="calculator-item__control">
+                                        <input type="checkbox" id="switcher-32" class="switcher">
+                                        <label for="switcher-32">
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <header class="calculator__header">Расстояние от МКАД</header>
+                        <div class="calculator__group">
+                            <div class="calculator__group-6">
+                                <div class="calculator-item">
+                                    <div class="calculator-item__label">86 км</div>
+                                    <div class="calculator-item__control">
+                                        <input type="checkbox" id="switcher-26" class="switcher">
+                                        <label for="switcher-26">
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="calculator__group-6">
+                                <div class="calculator-item">
+                                    <div class="calculator-item__label">99 км</div>
+                                    <div class="calculator-item__control">
+                                        <input type="checkbox" id="switcher-27" class="switcher">
+                                        <label for="switcher-27">
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="calculator__group">
+                            <div class="calculator__group-6">
+                                <div class="calculator-item">
+                                    <div class="calculator-item__label">99 км</div>
+                                    <div class="calculator-item__control">
+                                        <input type="checkbox" id="switcher-33" class="switcher">
+                                        <label for="switcher-33">
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="calculator__group-6">
+                                <div class="calculator-item">
+                                    <div class="calculator-item__label">99 км</div>
+                                    <div class="calculator-item__control">
+                                        <input type="checkbox" id="switcher-34" class="switcher">
+                                        <label for="switcher-34">
+                                            <span class="toggle"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <button id="calculator-submit" class="btn btn-yellow calculator-submit" type="submit">
+                            Показать <br>
+                            варианты
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <div id="villages" class="villages">
+        <div id="boroviki" class="village village--boroviki">
+            <div class="container">
+                <div
+                        class="close icon icon-close"
+                        title="Свернуть"
+                        data-icon="icon-close"
+                        data-hover-icon="icon-close-hover"
+                ></div>
+
+                <div class="col-group">
+                    <div class="col-9">
+                        <div class="village__body">
+                            <header class="village__header">
+                                Боровики 2
+                            </header>
+
+                            <div class="village__description">
+                                <p>Вопреки распространенным утверждениям, управление политическими конфликтами символизирует кризис легитимности. Политическая социализация неоднозначна. Элемент политического процесса, согласно традиционным представлениям, сохраняет современный тоталитарный тип политической культуры. </p>
+
+                                <p>Понятие тоталитаризма приводит классический гуманизм. Понятие политического конфликта интегрирует экзистенциальный механизм власти. Политическое учение Платона, на первый взгляд, приводит теоретический коллапс Советского Союза.</p>
+                            </div>
+
+                            <div class="village__more">
+                                <a href="#" class="btn btn-green">
+                                    Подробнее о посёлке
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <div class="village__news">
+                            <div class="village__article">
+                                <div class="date">30 июня 2016</div>
+                                <header class="article-header">
+                                    <a href="#">Институциональный социализм: основные моменты</a>
+                                </header>
+                                <div class="article-body">
+                                    <p>Вопреки распространенным утверждениям, управление политическими конфликтами символизирует кризис легитимности. Политическая социализация неоднозначна.</p>
+                                </div>
+
+                                <div class="readmore">
+                                    <a href="#">Все новости посёлка</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="#" class="special-actions">
+                            <span class="icon icon-actions"></span>
+                            <span class="text">Акции и спецпредложения</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="sun-valley" class="village village--sun-valley">
+            <div class="container">
+                <div
+                        class="close icon icon-close"
+                        title="Свернуть"
+                        data-icon="icon-close"
+                        data-hover-icon="icon-close-hover"
+                ></div>
+
+                <div class="col-group">
+                    <div class="col-9">
+                        <div class="village__body">
+                            <header class="village__header">
+                                Солнечная долина
+                            </header>
+
+                            <div class="village__description">
+                                <p>Вопреки распространенным утверждениям, управление политическими конфликтами символизирует кризис легитимности. Политическая социализация неоднозначна. Элемент политического процесса, согласно традиционным представлениям, сохраняет современный тоталитарный тип политической культуры. </p>
+
+                                <p>Понятие тоталитаризма приводит классический гуманизм. Понятие политического конфликта интегрирует экзистенциальный механизм власти. Политическое учение Платона, на первый взгляд, приводит теоретический коллапс Советского Союза.</p>
+                            </div>
+
+                            <div class="village__more">
+                                <a href="#" class="btn btn-green">
+                                    Подробнее о посёлке
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <div class="village__news">
+                            <div class="village__article">
+                                <div class="date">30 июня 2016</div>
+                                <header class="article-header">
+                                    <a href="#">Институциональный социализм: основные моменты</a>
+                                </header>
+                                <div class="article-body">
+                                    <p>Вопреки распространенным утверждениям, управление политическими конфликтами символизирует кризис легитимности. Политическая социализация неоднозначна.</p>
+                                </div>
+
+                                <div class="readmore">
+                                    <a href="#">Все новости посёлка</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="#" class="special-actions">
+                            <span class="icon icon-actions"></span>
+                            <span class="text">Акции и спецпредложения</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tishnevo" class="village village--tishnevo">
+            <div class="container">
+                <div
+                        class="close icon icon-close"
+                        title="Свернуть"
+                        data-icon="icon-close"
+                        data-hover-icon="icon-close-hover"
+                ></div>
+
+                <div class="col-group">
+                    <div class="col-9">
+                        <div class="village__body">
+                            <header class="village__header">
+                                Тишнево 1,2,3
+                            </header>
+
+                            <div class="village__description">
+                                <p>Вопреки распространенным утверждениям, управление политическими конфликтами символизирует кризис легитимности. Политическая социализация неоднозначна. Элемент политического процесса, согласно традиционным представлениям, сохраняет современный тоталитарный тип политической культуры. </p>
+
+                                <p>Понятие тоталитаризма приводит классический гуманизм. Понятие политического конфликта интегрирует экзистенциальный механизм власти. Политическое учение Платона, на первый взгляд, приводит теоретический коллапс Советского Союза.</p>
+                            </div>
+
+                            <div class="village__more">
+                                <a href="#" class="btn btn-green">
+                                    Подробнее о посёлке
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <div class="village__news">
+                            <div class="village__article">
+                                <div class="date">30 июня 2016</div>
+                                <header class="article-header">
+                                    <a href="#">Институциональный социализм: основные моменты</a>
+                                </header>
+                                <div class="article-body">
+                                    <p>Вопреки распространенным утверждениям, управление политическими конфликтами символизирует кризис легитимности. Политическая социализация неоднозначна.</p>
+                                </div>
+
+                                <div class="readmore">
+                                    <a href="#">Все новости посёлка</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="#" class="special-actions">
+                            <span class="icon icon-actions"></span>
+                            <span class="text">Акции и спецпредложения</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="promzemlya" class="village village--promzemlya">
+            <div class="container">
+                <div
+                        class="close icon icon-close"
+                        title="Свернуть"
+                        data-icon="icon-close"
+                        data-hover-icon="icon-close-hover"
+                ></div>
+
+                <div class="col-group">
+                    <div class="col-9">
+                        <div class="village__body">
+                            <header class="village__header">
+                                Промземля
+                            </header>
+
+                            <div class="village__description">
+                                <p>Вопреки распространенным утверждениям, управление политическими конфликтами символизирует кризис легитимности. Политическая социализация неоднозначна. Элемент политического процесса, согласно традиционным представлениям, сохраняет современный тоталитарный тип политической культуры. </p>
+
+                                <p>Понятие тоталитаризма приводит классический гуманизм. Понятие политического конфликта интегрирует экзистенциальный механизм власти. Политическое учение Платона, на первый взгляд, приводит теоретический коллапс Советского Союза.</p>
+                            </div>
+
+                            <div class="village__more">
+                                <a href="#" class="btn btn-green">
+                                    Подробнее о посёлке
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <div class="village__news">
+                            <div class="village__article">
+                                <div class="date">30 июня 2016</div>
+                                <header class="article-header">
+                                    <a href="#">Институциональный социализм: основные моменты</a>
+                                </header>
+                                <div class="article-body">
+                                    <p>Вопреки распространенным утверждениям, управление политическими конфликтами символизирует кризис легитимности. Политическая социализация неоднозначна.</p>
+                                </div>
+
+                                <div class="readmore">
+                                    <a href="#">Все новости посёлка</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="#" class="special-actions">
+                            <span class="icon icon-actions"></span>
+                            <span class="text">Акции и спецпредложения</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="advantages">
+        <div class="inner">
+            <div class="advantage">
+                <div class="advantage__icon">
+                    <div class="icon icon-advantage-1"></div>
+                </div>
+                <div class="advantage__title">
+                    Готовые поселки со всеми коммуникациями
+                </div>
+            </div>
+
+            <div class="advantage">
+                <div class="advantage__icon">
+                    <div class="icon icon-advantage-2"></div>
+                </div>
+                <div class="advantage__title">
+                    Круглосуточная охрана въезда и патрулирование
+                </div>
+            </div>
+
+            <div class="advantage">
+                <div class="advantage__icon">
+                    <div class="icon icon-advantage-3"></div>
+                </div>
+                <div class="advantage__title">
+                    Гибкая система скидок и ценообразования
+                </div>
+            </div>
+
+            <div class="advantage">
+                <div class="advantage__icon">
+                    <div class="icon icon-advantage-4"></div>
+                </div>
+                <div class="advantage__title">
+                    Рассрочка 0% и ипотека
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="map" class="map"></div>
+    <div class="callback">
+        <div class="inner">
+
+            <div class="callback__left">
+                <div class="icon icon-callback"></div>
+            </div>
+
+            <div class="callback__right">
+                <div class="callback__header">
+                    Остались вопросы? <span class="bold">Мы вам перезвоним!</span>
+                </div>
+
+                <form action="/form-handler.php" method="post" class="form-inline" id="callback-form">
+                    <input type="hidden" name="form_id" value="callback">
+
+                    <div class="form-group">
+                        <input type="text"
+                               data-type="phone"
+                               name="phone"
+                               class="form-control"
+                               placeholder="Контактный телефон">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text"
+                               name="name"
+                               class="form-control"
+                               placeholder="Как к вам обращаться?">
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-blue callback__submit">Перезвоните мне</button>
+                    </div>
+                </form>
+
+                <div class="callback__info">
+                    Укажате Ваши контактные данные и наш менеджер свяжется с вами в ближайшее время
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="contacts" class="footer">
+        <div class="inner">
+            <div class="footer__widget">
+                <p class="copyright-1">© 2016, Долина имений</p>
+                <p class="copyright-2">Все права защищены</p>
+            </div>
+
+            <div class="footer__widget">
+                <p class="phone-lbl">Контактный телефон</p>
+                <a href="tel:8632277722" class="phone">
+                    863 <span class="bold">227 77 22</span>
+                </a>
+            </div>
+
+            <div class="footer__widget">
+                <div class="villages-h">Наши посёлки</div>
+                <ul class="footer-villages">
+                    <li><a href="#">Боровики 1</a></li>
+                    <li><a href="#">Солнечная долина</a></li>
+                    <li><a href="#">Тишнево 1</a></li>
+                    <li><a href="#">Тишнево 2</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__widget">
+                <p class="creator-lbl">Разработка сайта</p>
+                <p class="creator">
+                    <span class="icon icon-ddlab"></span>
+                    <a href="http://www.ddlab.ru/" target="_blank">DDLab.ru</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<div id="callme-popup" class="callme-popup">
+    <header class="callme-popup-header">Перезвоните мне</header>
+    <form action="form-handler.php" method="post" id="callme-form">
+        <input type="hidden" name="form_id" value="callme">
+
+        <div class="form-group">
+            <input type="text" name="name" class="form-control" placeholder="Ваше имя">
+        </div>
+
+        <div class="form-group">
+            <input type="text" name="phone" data-type="phone" class="form-control" placeholder="Ваш телефон">
+        </div>
+
+        <div class="form-group">
+            <input type="text" name="email" class="form-control" placeholder="Ваш email">
+        </div>
+
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-blue">Оставить заявку!</button>
+        </div>
+    </form>
+</div>
+
+<div id="banner" class="banner">
+    <img src="banner/banner.jpg" alt="" class="banner-image"/>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="//api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+<script src="bower_components/jquery.scrollTo/jquery.scrollTo.min.js"></script>
+<script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="bower_components/fancyBox/source/jquery.fancybox.pack.js"></script>
+<script src="scripts/jquery.maskedinput.min.js"></script>
+<script src="scripts/AjaxForm.js"></script>
+<script src="scripts/forms.js"></script>
+<script src="scripts/scrollspy.js"></script>
+<script src="scripts/app.js"></script>
+<script src="banner/banner.js"></script>
+<script>
+    $('#banner').banner({
+        delay: 10, // 10 sec
+        repeat: 60 * 12 // 12 hours
+    });
+</script>
+</body>
+</html>
